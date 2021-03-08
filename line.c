@@ -1,5 +1,9 @@
 #include "hsh.h"
 
+/**
+ * read_line - readline from stdin
+ * Return: line string
+ */
 char *read_line(void)
 {
 	char *line = NULL;
@@ -23,6 +27,11 @@ char *read_line(void)
 	return (line);
 }
 
+/**
+ * split_line - split into tokens
+ * @line: line passed to tokensize
+ * Return: Tokenized string
+ */
 char **split_line(char *line)
 {
 	int length = 0;
@@ -48,7 +57,8 @@ char **split_line(char *line)
 		{
 			bufsize += TOK_BUFSIZE;
 			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (!tokens) {
+			if (!tokens)
+			{
 				fprintf(stderr, "hsh: allocation error\n");
 				exit(EXIT_FAILURE);
 			}

@@ -1,7 +1,11 @@
 #include "hsh.h"
 
 /**
- *
+ * main - entry point
+ * @argc: number of args passed
+ * @argv: arguments passed
+ * @env_cmd: evironment command
+ * Return: (EXIT_SUCCESS) SUCCESS
  */
 
 int main(int argc, char *argv[], char **env_cmd)
@@ -16,14 +20,16 @@ int main(int argc, char *argv[], char **env_cmd)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * loop - loop prompt
+ */
 void loop(void)
 {
 	char *line = NULL;
 	char **tokens = NULL;
 	int status = 1;
 
-	do
-	{
+	do {
 		printf("hsh: ");
 		line = read_line();
 
@@ -35,6 +41,11 @@ void loop(void)
 	} while (status == 1);
 }
 
+/**
+ * launch - launch prompt
+ * @args: args passed to call
+ * Return: (1) SUCCESS
+ */
 int launch(char **args)
 {
 	pid_t pid, wpid;
@@ -63,6 +74,9 @@ int launch(char **args)
 	return (1);
 }
 
+/**
+ * atty - check for itneractive
+ */
 void atty(void)
 {
 	if (isatty(STDIN_FILENO))
